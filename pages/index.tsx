@@ -54,7 +54,7 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
               transition: 'opacity 0.3s ease',
             }}
           >
-            GET STARTED / LOG IN
+            PRE-RELEASE SIGNUP
           </button>
         )}
       </div>
@@ -62,33 +62,27 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
       {/* Center - Logo slot (absolutely centered) */}
       <div className="header-logo-slot" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }} />
 
-      {/* Right side - Contact (only when header is active) */}
+      {/* Right side - Contact (disabled for pre-release) */}
       <div style={{ position: 'absolute', right: '2rem' }}>
         {showButtons && (
-          <button
-            onClick={() => {
-              const section = document.getElementById('signup-section');
-              if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
+          <span
             style={{
               background: 'none',
               border: 'none',
-              color: '#52796F',
+              color: '#999',
               fontFamily: '"Coinbase Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
               fontSize: '16px',
               fontWeight: '600',
               textTransform: 'uppercase',
               letterSpacing: '0.5px',
-              cursor: 'pointer',
+              cursor: 'not-allowed',
               padding: '8px 16px',
-              opacity: showButtons ? 1 : 0,
+              opacity: showButtons ? 0.5 : 0,
               transition: 'opacity 0.3s ease',
             }}
           >
             CONTACT
-          </button>
+          </span>
         )}
       </div>
     </div>

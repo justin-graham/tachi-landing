@@ -154,18 +154,19 @@ export default function CustomFooter() {
           </form>
         </div>
 
-        {/* Right side - Navigation links */}
+        {/* Right side - Navigation links (disabled for pre-release) */}
         <div style={{
           display: 'flex',
           gap: '4rem'
         }}>
           <div>
             <span style={{
-              color: '#333',
+              color: '#999',
               textDecoration: 'none',
               fontSize: '1rem',
               fontFamily: '"Coinbase Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              cursor: 'default'
+              cursor: 'not-allowed',
+              opacity: 0.5
             }}>
               Docs
             </span>
@@ -173,11 +174,12 @@ export default function CustomFooter() {
 
           <div>
             <span style={{
-              color: '#333',
+              color: '#999',
               textDecoration: 'none',
               fontSize: '1rem',
               fontFamily: '"Coinbase Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              cursor: 'default'
+              cursor: 'not-allowed',
+              opacity: 0.5
             }}>
               Terms
             </span>
@@ -185,11 +187,12 @@ export default function CustomFooter() {
 
           <div>
             <span style={{
-              color: '#333',
+              color: '#999',
               textDecoration: 'none',
               fontSize: '1rem',
               fontFamily: '"Coinbase Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              cursor: 'default'
+              cursor: 'not-allowed',
+              opacity: 0.5
             }}>
               Privacy Policy
             </span>

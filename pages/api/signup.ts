@@ -1,10 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs';
-import path from 'path';
+import { kv } from '@vercel/kv';
 
-const DATA_FILE = path.join(process.cwd(), 'signups.json');
-
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -16,27 +13,22 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   try {
-    let signups = [];
-    
-    // Read existing signups if file exists
-    if (fs.existsSync(DATA_FILE)) {
-      const data = fs.readFileSync(DATA_FILE, 'utf8');
-      signups = JSON.parse(data);
-    }
-
     // Check if email already exists
-    if (signups.find((signup: any) => signup.email === email)) {
+    const existingEmail = await kv.get(`signup:${email}`);
+    if (existingEmail) {
       return res.status(400).json({ error: 'Email already registered' });
     }
 
-    // Add new signup
-    signups.push({
+    // Store email with timestamp
+    const signupData = {
       email,
       timestamp: new Date().toISOString(),
-    });
+    };
 
-    // Write back to file
-    fs.writeFileSync(DATA_FILE, JSON.stringify(signups, null, 2));
+    await kv.set(`signup:${email}`, signupData);
+    
+    // Also add to a list for easy retrieval
+    await kv.lpush('signups:all', email);
 
     res.status(200).json({ success: true, message: 'Email registered successfully' });
   } catch (error) {
