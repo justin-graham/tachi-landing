@@ -29,7 +29,7 @@ export default function CustomFooter() {
 
       if (response.ok) {
         setStatus('success');
-        setMessage('Thank you! You\'ve been added to our pre-release list.');
+        setMessage('Thank you! Now go get some sun on your skin.');
         setEmail('');
       } else {
         setStatus('error');
@@ -102,45 +102,69 @@ export default function CustomFooter() {
             color: '#333',
             letterSpacing: '-0.02em'
           }}>
-            <input
-              type="email"
-              placeholder="E-Mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={status === 'loading'}
-              style={{
-                fontSize: 'inherit',
-                lineHeight: 'inherit',
-                fontFamily: 'inherit',
-                fontWeight: 'inherit',
-                background: 'transparent',
-                border: 'none',
-                outline: 'none',
-                borderBottom: '3px solid #FF7043',
-                borderRadius: '0',
-                transition: 'all 0.2s ease',
-                padding: '0 0 4px 0',
-                margin: '0',
-                display: 'inline',
-                verticalAlign: 'baseline',
-                minWidth: '300px',
-                color: '#FF7043',
-                opacity: status === 'loading' ? 0.6 : 1,
-              }}
-              onFocus={(e) => {
-                e.target.style.borderBottomWidth = '4px';
-                e.target.style.borderBottomColor = '#E5633A';
-              }}
-              onBlur={(e) => {
-                e.target.style.borderBottomWidth = '3px';
-                e.target.style.borderBottomColor = '#FF7043';
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  handleSubmit(e);
-                }
-              }}
-            />
+            <div style={{ display: 'block' }}>
+              <input
+                type="email"
+                placeholder="E-Mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={status === 'loading'}
+                style={{
+                  fontSize: 'inherit',
+                  lineHeight: 'inherit',
+                  fontFamily: 'inherit',
+                  fontWeight: 'inherit',
+                  background: 'transparent',
+                  border: 'none',
+                  outline: 'none',
+                  borderBottom: '3px solid #FF7043',
+                  borderRadius: '0',
+                  transition: 'all 0.2s ease',
+                  padding: '0 0 4px 0',
+                  margin: '0 0 1.5rem 0',
+                  display: 'block',
+                  minWidth: '300px',
+                  color: '#FF7043',
+                  opacity: status === 'loading' ? 0.6 : 1,
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderBottomWidth = '4px';
+                  e.target.style.borderBottomColor = '#E5633A';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderBottomWidth = '3px';
+                  e.target.style.borderBottomColor = '#FF7043';
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSubmit(e);
+                  }
+                }}
+              />
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                style={{
+                  fontSize: 'inherit',
+                  lineHeight: 'inherit',
+                  fontFamily: 'inherit',
+                  fontWeight: 'inherit',
+                  background: 'transparent',
+                  border: 'none',
+                  outline: 'none',
+                  borderRadius: '0',
+                  transition: 'all 0.2s ease',
+                  padding: '0',
+                  margin: '0',
+                  color: '#333',
+                  cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+                  opacity: status === 'loading' ? 0.6 : 1,
+                  letterSpacing: '-0.02em'
+                }}
+              >
+                {status === 'loading' ? 'Submitting...' : 'Submit'}
+              </button>
+            </div>
             {message && (
               <div style={{
                 marginTop: '1rem',
