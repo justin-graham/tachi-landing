@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
 import path from 'path';
+import { createClient } from 'redis';
 
-// Try to use Vercel KV if available, fallback to file storage for local dev
+// Try to use Vercel KV if available, fallback to Redis or file storage
 let kv: any = null;
 try {
   kv = require('@vercel/kv').kv;
@@ -24,8 +25,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    // Check if we're in production with Vercel KV
+    // Check available storage options
     const hasKvCredentials = process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN;
+    const hasRedisUrl = process.env.REDIS_URL;
+    
+    console.log('Storage check:', {
+      hasKv: !!kv,
+      hasKvCredentials,
+      hasRedisUrl: !!hasRedisUrl,
+      environment: process.env.NODE_ENV,
+      storageMethod: (kv && hasKvCredentials) ? 'Vercel KV' : hasRedisUrl ? 'Redis' : 'File Storage'
+    });
     
     if (kv && hasKvCredentials) {
       // Use Vercel KV in production
@@ -41,6 +51,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       await kv.set(`signup:${email}`, signupData);
       await kv.lpush('signups:all', email);
+      
+      console.log('✅ Stored in Vercel KV:', email);
+    } else if (hasRedisUrl) {
+      // Use standard Redis
+      const client = createClient({
+        url: process.env.REDIS_URL
+      });
+      
+      await client.connect();
+      
+      // Check if email already exists
+      const existingEmail = await client.get(`signup:${email}`);
+      if (existingEmail) {
+        await client.quit();
+        return res.status(400).json({ error: 'Email already registered' });
+      }
+
+      const signupData = {
+        email,
+        timestamp: new Date().toISOString(),
+      };
+
+      await client.set(`signup:${email}`, JSON.stringify(signupData));
+      await client.lPush('signups:all', email);
+      await client.quit();
+      
+      console.log('✅ Stored in Redis:', email);
     } else {
       // Use file storage for local development
       let signups = [];
