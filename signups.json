@@ -1,0 +1,18 @@
+[
+  {
+    "email": "test@example.com",
+    "timestamp": "2025-09-19T04:13:43.135Z"
+  },
+  {
+    "email": "user2@example.com",
+    "timestamp": "2025-09-19T04:20:55.943Z"
+  },
+  {
+    "email": "test@gmail.com",
+    "timestamp": "2025-09-19T04:21:25.916Z"
+  },
+  {
+    "email": "test@email.com",
+    "timestamp": "2025-09-19T19:18:28.014Z"
+  }
+]

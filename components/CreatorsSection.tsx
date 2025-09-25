@@ -25,7 +25,7 @@ const ContentTypesList = () => {
       alignItems: 'flex-start',
       padding: '4rem',
       lineHeight: '1.1'
-    }}>
+    }} className="content-types-list">
       {contentTypes.map((content, index) => (
         <div
           key={content}
@@ -38,10 +38,37 @@ const ContentTypesList = () => {
             textTransform: 'none',
             letterSpacing: '-0.02em'
           }}
+          className="content-type-item"
         >
           {content}
         </div>
       ))}
+      
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .content-types-list {
+            padding: 2rem !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          
+          .content-type-item {
+            font-size: 2.5rem !important;
+            margin-bottom: -0.4rem !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .content-types-list {
+            padding: 1.5rem !important;
+          }
+          
+          .content-type-item {
+            font-size: 2rem !important;
+            margin-bottom: -0.2rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
@@ -56,7 +83,7 @@ export default function CreatorsSection() {
       justifyContent: 'flex-start',
       minHeight: '100vh',
       gap: '4rem'
-    }}>
+    }} className="creators-section">
       <div style={{
         flex: '0 0 50%',
         minHeight: '600px',
@@ -64,7 +91,7 @@ export default function CreatorsSection() {
         borderRadius: '0 12px 12px 0',
         position: 'relative',
         overflow: 'hidden'
-      }}>
+      }} className="content-list-column">
         <ContentTypesList />
       </div>
 
@@ -78,7 +105,7 @@ export default function CreatorsSection() {
         fontFamily: '"Coinbase Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
         fontWeight: '300',
         paddingRight: '2rem'
-      }}>
+      }} className="creators-text-column">
         <p style={{ margin: '0 0 2rem 0' }}>
           <span style={{ fontWeight: '500' }}>Creator & Publisher Example Use</span>
           <br /><br />
@@ -164,6 +191,54 @@ export default function CreatorsSection() {
           }}></div>
         </div>
       </div>
+      
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .creators-section {
+            flex-direction: column !important;
+            padding: 3rem 1rem !important;
+            gap: 3rem !important;
+            min-height: auto !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
+          
+          .content-list-column {
+            flex: none !important;
+            width: 100% !important;
+            max-width: 350px !important;
+            min-height: 400px !important;
+            border-radius: 12px !important;
+            order: 1;
+          }
+          
+          .creators-text-column {
+            flex: none !important;
+            max-width: 100% !important;
+            text-align: center !important;
+            font-size: 17px !important;
+            padding-right: 0 !important;
+            order: 2;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .creators-section {
+            padding: 2rem 1rem !important;
+            gap: 2rem !important;
+          }
+          
+          .content-list-column {
+            max-width: 300px !important;
+            min-height: 350px !important;
+          }
+          
+          .creators-text-column {
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

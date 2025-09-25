@@ -285,9 +285,89 @@ const ComputerGallery = () => {
             border-radius: 0px 0px 6px 6px;
             transition: all 0.8s ease;
         }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+          .computer-gallery-section {
+            min-height: auto !important;
+            height: auto !important;
+            padding: 4rem 0 !important;
+          }
+          
+          .container {
+            height: auto !important;
+            min-height: auto !important;
+            padding: 0 1rem;
+          }
+          
+          .gallery-wrap {
+            flex-direction: column !important;
+            height: auto !important;
+            gap: 2rem;
+          }
+          
+          .item {
+            flex: none !important;
+            height: 300px !important;
+            width: 100% !important;
+            max-width: 350px;
+            margin: 0 auto;
+            border-radius: 12px;
+          }
+          
+          .item:hover {
+            flex: none !important;
+            transform: scale(1.02);
+          }
+          
+          .computer-group {
+            transform: scale(0.9) !important;
+          }
+          
+          .item:hover .computer-group {
+            transform: scale(1.0) !important;
+          }
+          
+          .screen-label {
+            font-size: 14px !important;
+            margin-bottom: 15px !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .computer-gallery-section {
+            padding: 3rem 0 !important;
+          }
+          
+          .container {
+            padding: 0 1rem !important;
+          }
+          
+          .gallery-wrap {
+            gap: 1.5rem !important;
+          }
+          
+          .item {
+            height: 250px !important;
+            max-width: 300px !important;
+          }
+          
+          .computer-group {
+            transform: scale(0.8) !important;
+          }
+          
+          .item:hover .computer-group {
+            transform: scale(0.9) !important;
+          }
+          
+          .screen-label {
+            font-size: 12px !important;
+            margin-bottom: 12px !important;
+          }
+        }
       `}</style>
       
-      <section style={{ backgroundColor: '#FAF9F6', width: '100%', height: '100vh' }}>
+      <section style={{ backgroundColor: '#FAF9F6', width: '100%', minHeight: '100vh' }} className="computer-gallery-section">
         <div className="container">
             <div className="gallery-wrap">
                 <div className="item item-1">

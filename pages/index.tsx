@@ -28,9 +28,9 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
       zIndex: 999,
     }}
   >
-    <div className="h-full flex items-center px-8" style={{ position: 'relative' }}>
+    <div className="h-full flex items-center px-8" style={{ position: 'relative', paddingTop: '8px' }} id="header-container">
       {/* Left side - Get Started / Log In (only when header is active) */}
-      <div style={{ position: 'absolute', left: '2rem' }}>
+      <div style={{ position: 'absolute', left: '2rem' }} className="header-left">
         {showButtons && (
           <button
             onClick={() => {
@@ -53,6 +53,7 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
               opacity: showButtons ? 1 : 0,
               transition: 'opacity 0.3s ease',
             }}
+            className="header-button"
           >
             PRE-RELEASE SIGNUP
           </button>
@@ -63,7 +64,7 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
       <div className="header-logo-slot" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }} />
 
       {/* Right side - Contact (disabled for pre-release) */}
-      <div style={{ position: 'absolute', right: '2rem' }}>
+      <div style={{ position: 'absolute', right: '2rem' }} className="header-right">
         {showButtons && (
           <span
             style={{
@@ -80,12 +81,42 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
               opacity: showButtons ? 0.5 : 0,
               transition: 'opacity 0.3s ease',
             }}
+            className="header-button"
           >
             CONTACT
           </span>
         )}
       </div>
     </div>
+    
+    <style jsx>{`
+      @media (max-width: 768px) {
+        #header-container {
+          padding: 0 1rem !important;
+        }
+        
+        .header-left {
+          left: 1rem !important;
+        }
+        
+        .header-right {
+          right: 1rem !important;
+        }
+        
+        .header-button {
+          font-size: 14px !important;
+          padding: 6px 12px !important;
+          letter-spacing: 0.3px !important;
+        }
+      }
+      
+      @media (max-width: 580px) {
+        .header-left,
+        .header-right {
+          display: none !important;
+        }
+      }
+    `}</style>
   </header>
 );
 

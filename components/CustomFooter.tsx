@@ -46,14 +46,14 @@ export default function CustomFooter() {
       padding: '4rem 2rem',
       position: 'relative',
       minHeight: '80vh'
-    }}>
+    }} className="footer-section">
       {/* Large background text */}
       <div style={{
         position: 'absolute',
         top: '60%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        fontSize: 'clamp(11.5rem, 27.6vw, 34.5rem)',
+        fontSize: 'clamp(13rem, 30vw, 38rem)',
         fontWeight: '500',
         color: 'rgba(255, 255, 255, 0.4)',
         fontFamily: '"Coinbase Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -63,7 +63,7 @@ export default function CustomFooter() {
         userSelect: 'none',
         pointerEvents: 'none',
         zIndex: 1
-      }}>
+      }} className="footer-background-text">
         tachi
       </div>
 
@@ -77,11 +77,11 @@ export default function CustomFooter() {
         maxWidth: '1200px',
         margin: '0 auto',
         height: '100%'
-      }}>
+      }} className="footer-content">
         {/* Left side - Pre-Release signup */}
         <div style={{
           maxWidth: '400px'
-        }}>
+        }} className="signup-section">
           <h3 style={{
             fontSize: '1.8rem',
             fontWeight: '400',
@@ -90,7 +90,7 @@ export default function CustomFooter() {
             fontFamily: '"Coinbase Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
             letterSpacing: '-0.02em',
             lineHeight: '1.2'
-          }}>
+          }} className="signup-title">
             Pre-Release Sign Up
           </h3>
           
@@ -181,7 +181,7 @@ export default function CustomFooter() {
         {/* Right side - Navigation links (disabled for pre-release) */}
         <div style={{
           display: 'flex',
-          gap: '4rem'
+          gap: '2.5rem'
         }}>
           <div>
             <span style={{
@@ -223,6 +223,76 @@ export default function CustomFooter() {
           </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .footer-section {
+            padding: 4rem 1rem 6rem 1rem !important;
+            min-height: 80vh !important;
+            text-align: center;
+          }
+          
+          .footer-background-text {
+            top: 70% !important;
+            font-size: clamp(9rem, 24vw, 14rem) !important;
+            opacity: 0.4 !important;
+            z-index: 1 !important;
+          }
+          
+          .footer-content {
+            flex-direction: column !important;
+            gap: 4rem !important;
+            text-align: center !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            position: relative !important;
+            z-index: 10 !important;
+          }
+          
+          .signup-section {
+            max-width: 100% !important;
+            width: 100% !important;
+            margin-top: 2rem !important;
+          }
+          
+          .signup-title {
+            font-size: 1.5rem !important;
+            margin-bottom: 2rem !important;
+            text-align: center !important;
+          }
+          
+          .signup-section input {
+            text-align: center !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .footer-section {
+            padding: 3rem 1rem 5rem 1rem !important;
+            min-height: 70vh !important;
+          }
+          
+          .footer-background-text {
+            font-size: clamp(7rem, 20vw, 11rem) !important;
+            top: 75% !important;
+            opacity: 0.35 !important;
+          }
+          
+          .footer-content {
+            gap: 3rem !important;
+            margin-top: 1rem !important;
+          }
+          
+          .signup-title {
+            font-size: 1.3rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+          
+          .signup-section input {
+            text-align: center !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 }
