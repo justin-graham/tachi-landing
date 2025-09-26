@@ -242,6 +242,14 @@ export default function Landing() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/tachi-logo.svg" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <style>{`
+          @media (max-width: 768px) {
+            .two-column-section { flex-direction: column !important; gap: 3rem !important; padding: 3rem 1rem !important; }
+            .visual-column { flex: none !important; width: 100% !important; max-width: 280px !important; order: 1; }
+            .text-column { flex: none !important; max-width: 100% !important; text-align: center !important; order: 2; }
+            .publishers-section, .developers-section, .creators-section, .developers-pay-section { flex-direction: column !important; }
+          }
+        `}</style>
       </Head>
       
       <div style={{ position: 'relative', minHeight: '200vh', backgroundColor: '#FAF9F6' }}>
