@@ -240,6 +240,9 @@ export default function Landing() {
         <title>Tachi | Pre-Release</title>
         <meta name="description" content="The standard for monetizing web content and powering the agentic economy." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
         <link rel="icon" href="/images/tachi-logo.svg" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <style>{`
