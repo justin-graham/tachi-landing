@@ -239,12 +239,13 @@ export default function Landing() {
       <Head>
         <title>Tachi | Pre-Release</title>
         <meta name="description" content="The standard for monetizing web content and powering the agentic economy." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
         <link rel="icon" href="/images/tachi-logo.svg" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <style>{`
           @media (max-width: 768px) {
             .two-column-section { flex-direction: column !important; gap: 3rem !important; padding: 3rem 1rem !important; }

@@ -1,8 +1,9 @@
 /* Mobile responsive styles - ensuring they work in production */
 
 @media (max-width: 768px) {
-  /* Two-column sections */
-  .two-column-section {
+  /* Two-column sections - enhanced specificity */
+  html body .two-column-section,
+  body .two-column-section {
     flex-direction: column !important;
     gap: 3rem !important;
     padding: 3rem 1rem !important;
@@ -10,7 +11,8 @@
     min-height: auto !important;
   }
   
-  .visual-column {
+  html body .visual-column,
+  body .visual-column {
     flex: none !important;
     width: 100% !important;
     max-width: 280px !important;
@@ -19,7 +21,8 @@
     overflow: hidden;
   }
   
-  .text-column {
+  html body .text-column,
+  body .text-column {
     flex: none !important;
     max-width: 100% !important;
     text-align: center !important;
@@ -27,11 +30,15 @@
     order: 2;
   }
   
-  /* Publishers/Developers/Creators sections */
-  .publishers-section,
-  .developers-section,
-  .creators-section,
-  .developers-pay-section {
+  /* Publishers/Developers/Creators sections - enhanced specificity */
+  html body .publishers-section,
+  html body .developers-section,
+  html body .creators-section,
+  html body .developers-pay-section,
+  body .publishers-section,
+  body .developers-section,
+  body .creators-section,
+  body .developers-pay-section {
     flex-direction: column !important;
     padding: 3rem 1rem !important;
     gap: 3rem !important;
