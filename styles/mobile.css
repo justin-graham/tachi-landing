@@ -1,6 +1,22 @@
 /* Mobile responsive styles - ensuring they work in production */
 
 @media (max-width: 768px) {
+  /* Mobile-only overflow prevention */
+  html, body, #__next {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Override the px-8 padding that's causing overflow */
+  .header-container-main.px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Hide header navigation on mobile to prevent overflow */
+  .header-left, .header-right {
+    display: none !important;
+  }
   /* Two-column sections - enhanced specificity */
   html body .two-column-section,
   body .two-column-section {
