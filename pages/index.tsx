@@ -26,11 +26,14 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
       height: '64px',
       backgroundColor: '#FAF9F6',
       zIndex: 999,
+      width: '100%',
+      maxWidth: '100vw',
+      overflowX: 'clip',
     }}
   >
-    <div className="h-full flex items-center px-8" style={{ position: 'relative', paddingTop: '8px' }} id="header-container">
+    <div className="h-full flex flex-wrap md:flex-nowrap items-center px-4 md:px-6 lg:px-8" style={{ position: 'relative', paddingTop: '8px', minWidth: 0, width: '100%', gap: '1rem' }} id="header-container">
       {/* Left side - Get Started / Log In (only when header is active) */}
-      <div style={{ position: 'absolute', left: '2rem' }} className="header-left">
+      <div style={{ position: 'absolute', left: '1rem' }} className="header-left hidden md:block">
         {showButtons && (
           <button
             onClick={() => {
@@ -52,6 +55,7 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
               padding: '8px 16px',
               opacity: showButtons ? 1 : 0,
               transition: 'opacity 0.3s ease',
+              whiteSpace: 'nowrap',
             }}
             className="header-button"
           >
@@ -64,7 +68,7 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
       <div className="header-logo-slot" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }} />
 
       {/* Right side - Contact (disabled for pre-release) */}
-      <div style={{ position: 'absolute', right: '2rem' }} className="header-right">
+      <div style={{ position: 'absolute', right: '1rem' }} className="header-right hidden md:block">
         {showButtons && (
           <span
             style={{
@@ -78,6 +82,7 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
               letterSpacing: '0.5px',
               cursor: 'not-allowed',
               padding: '8px 16px',
+              whiteSpace: 'nowrap',
               opacity: showButtons ? 0.5 : 0,
               transition: 'opacity 0.3s ease',
             }}
