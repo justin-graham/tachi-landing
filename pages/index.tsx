@@ -28,7 +28,12 @@ const StickyHeader = ({ showButtons }: { showButtons: boolean }) => (
       zIndex: 999,
     }}
   >
-    <div className="h-full flex items-center px-8 header-container-main" style={{ position: 'relative', paddingTop: '8px' }} id="header-container">
+    <div className="h-full flex items-center header-container-main" style={{ 
+      position: 'relative', 
+      paddingTop: '8px',
+      paddingLeft: '2rem',
+      paddingRight: '2rem'
+    }} id="header-container">
       {/* Left side - Get Started / Log In (only when header is active) */}
       <div style={{ position: 'absolute', left: '2rem' }} className="header-left">
         {showButtons && (

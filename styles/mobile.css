@@ -7,8 +7,10 @@
     overflow-x: hidden !important;
   }
   
-  /* Override the px-8 padding that's causing overflow */
-  .header-container-main.px-8 {
+  /* Force override the header padding (targeting both class and inline styles) */
+  .header-container-main,
+  #header-container,
+  div.h-full.flex.items-center {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
